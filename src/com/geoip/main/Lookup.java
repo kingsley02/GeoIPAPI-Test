@@ -21,7 +21,7 @@ public class Lookup {
 			String fileName = getClass().getResource("/resources/GeoIP.dat").toExternalForm().substring(5);
 			//Windows
 //			String fileName = getClass().getResource("/resources/GeoIP.dat").toExternalForm().substring(6);
-			LookupService lookupService = new LookupService(fileName);
+			LookupService lookupService = new LookupService(fileName, LookupService.GEOIP_CHECK_CACHE);
 			for (IPLocation location : locations) {
 				Country country = lookupService.getCountry(location.ipAddress());
 				location.setCountry(country.getName());
