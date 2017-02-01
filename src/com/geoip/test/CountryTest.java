@@ -25,13 +25,16 @@ public class CountryTest {
 	
 	@Test
 	public void shouldGetCountryForASingleIpAdress() throws Exception {		
-		locations.add(new IPLocation("0.0.0.0"));
+		locations.add(new IPLocation("139.130.4.5"));
 		assertTrue(lookup.resolve().equals(resolvedLocations()));
 	}
 
 	private List<IPLocation> resolvedLocations() {
-		
-		return null;
+		List<IPLocation> locations = new ArrayList<IPLocation>();
+		IPLocation location = new IPLocation("139.130.4.5");
+		location.setCountry("Australia");
+		locations.add(location);
+		return locations;
 	}
 	
 
