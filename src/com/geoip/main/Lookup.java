@@ -3,14 +3,24 @@ package com.geoip.main;
 import java.io.IOException;
 import java.util.List;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.maxmind.geoip.Country;
 import com.maxmind.geoip.LookupService;
 
+@RestController
+@EnableAutoConfiguration
 public class Lookup {
 
 	private List<IPLocation> locations;
 	
-
+	public Lookup() {
+		
+	}
+	
 	public Lookup(List<IPLocation> locations) {
 		this.locations = locations;
 	}
@@ -32,5 +42,14 @@ public class Lookup {
 		}
 		
 	}
+	
+	@RequestMapping("/")
+    String home() {
+        return "Hello World!";
+    }
+	
+	public static void main(String[] args) throws Exception {
+        SpringApplication.run(Lookup.class, args);
+    }
 
 }
